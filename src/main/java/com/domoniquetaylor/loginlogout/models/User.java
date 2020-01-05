@@ -1,41 +1,39 @@
 package com.domoniquetaylor.loginlogout.models;
 
-import com.sun.istack.internal.NotNull;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "User")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
-    private String name;
+    private String userName;
 
-    @NotNull
     private String password;
 
-    private String role = "User";
+    private boolean active;
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
+    private String role;
 
     public int getId() {
         return id;
     }
 
-    public User() {}
-
-    public String getName() {
-        return name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -46,12 +44,22 @@ public class User {
         this.password = password;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public String getRole() {
         return role;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
 
 
 
-}
